@@ -548,21 +548,21 @@ export function init() {
   // renderHeaderAndFooter();
 
   switch (global.currentPage) {
-    case "/index.html":
-    case "/index.html":
+    
+    case "popcorn_film_flix/index.html":
       displaySlider();
       displayPopularMovies();
       break;
-    case "/pages/shows.html":
+    case "popcorn_film_flix/pages/shows.html":
       displayPopularShows();
       break;
-    case "/pages/movie-details.html":
+    case "popcorn_film_flix/pages/movie-details.html":
       displayMovieDetails();
       break;
-    case "/pages/tv-details.html":
+    case "popcorn_film_flix/pages/tv-details.html":
       displayShowDetails();
       break;
-    case "/pages/search.html":
+    case "popcorn_film_flix/pages/search.html":
       search();
       break;
   }
