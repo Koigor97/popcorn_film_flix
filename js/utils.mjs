@@ -80,7 +80,7 @@ async function displayPopularMovies() {
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-          <a href="/popcorn_film/pages/movie-details.html?id=${movie.id}">
+          <a href="movie-details.html?id=${movie.id}">
             ${
               movie.poster_path
                 ? `<img
@@ -549,20 +549,20 @@ export function init() {
 
   switch (global.currentPage) {
     
-    case "popcorn_film_flix/index.html":
+    case "popcorn_film_flix/":
       displaySlider();
       displayPopularMovies();
       break;
-    case "popcorn_film_flix/pages/shows.html":
+    case "shows.html":
       displayPopularShows();
       break;
-    case "popcorn_film_flix/pages/movie-details.html":
+    case "movie-details.html":
       displayMovieDetails();
       break;
-    case "popcorn_film_flix/pages/tv-details.html":
+    case "tv-details.html":
       displayShowDetails();
       break;
-    case "popcorn_film_flix/pages/search.html":
+    case "search.html":
       search();
       break;
   }
