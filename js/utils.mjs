@@ -80,7 +80,7 @@ async function displayPopularMovies() {
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-          <a href="movie-details.html?id=${movie.id}">
+          <a href="movie-details.html#id=${movie.id}">
             ${
               movie.poster_path
                 ? `<img
@@ -115,7 +115,7 @@ async function displayPopularShows() {
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-          <a href="tv-details.html?id=${show.id}">
+          <a href="tv-details.html#id=${show.id}">
             ${
               show.poster_path
                 ? `<img
@@ -346,7 +346,7 @@ function displaySearchResults(results) {
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-          <a href="${global.search.type}-details.html?id=${result.id}">
+          <a href="${global.search.type}-details.html#id=${result.id}">
             ${
               result.poster_path
                 ? `<img
@@ -436,7 +436,7 @@ async function displaySlider() {
     div.classList.add("swiper-slide");
 
     div.innerHTML = `
-      <a href="/popcorn_film/pages/movie-details.html?id=${movie.id}">
+      <a href="/popcorn_film/pages/movie-details.html#id=${movie.id}">
         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
       </a>
       <h4 class="swiper-rating">
@@ -549,20 +549,20 @@ export function init() {
 
   switch (global.currentPage) {
     
-    case "popcorn_film_flix/":
+    case "/popcorn_film_flix/index.html":
       displaySlider();
       displayPopularMovies();
       break;
-    case "shows.html":
+    case "/popcorn_film_flix/shows.html":
       displayPopularShows();
       break;
-    case "movie-details.html":
+    case "/popcorn_film_flix/movie-details.html":
       displayMovieDetails();
       break;
-    case "tv-details.html":
+    case "/popcorn_film_flix/tv-details.html":
       displayShowDetails();
       break;
-    case "search.html":
+    case "/popcorn_film_flix/search.html":
       search();
       break;
   }
