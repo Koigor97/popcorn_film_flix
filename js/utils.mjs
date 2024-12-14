@@ -58,18 +58,18 @@ export const renderTemplateToView = (
  * @returns void
  */
 
-// export const renderHeaderAndFooter = async () => {
-//   const headerTemplate = await loadTemplate("/popcorn_film/partials/header.html");
-//   const footerTemplate = await loadTemplate("/popcorn_film/partials/footer.html");
-//   const navTemplate = await loadTemplate("/popcorn_film/partials/navigation.html");
+export const renderHeaderAndFooter = async () => {
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+  const navTemplate = await loadTemplate("../partials/navigation.html");
 
-//   const headerElement = document.querySelector(".main-header .container");
-//   renderTemplateToView(navTemplate, headerElement);
-//   const footerElement = document.querySelector(".main-footer");
+  const headerElement = document.querySelector(".main-header .container");
+  renderTemplateToView(navTemplate, headerElement);
+  const footerElement = document.querySelector(".main-footer");
 
-//   renderTemplateToView(headerTemplate, headerElement);
-//   renderTemplateToView(footerTemplate, footerElement);
-// };
+  renderTemplateToView(headerTemplate, headerElement);
+  renderTemplateToView(footerTemplate, footerElement);
+};
 
 // Display 20 most popular movies
 async function displayPopularMovies() {
@@ -80,7 +80,7 @@ async function displayPopularMovies() {
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-          <a href="movie-details.html#id=${movie.id}">
+          <a href="/pages/movie-details.html?id=${movie.id}">
             ${
               movie.poster_path
                 ? `<img
@@ -115,7 +115,7 @@ async function displayPopularShows() {
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-          <a href="tv-details.html#id=${show.id}">
+          <a href="tv-details.html?id=${show.id}">
             ${
               show.poster_path
                 ? `<img
@@ -346,7 +346,7 @@ function displaySearchResults(results) {
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-          <a href="${global.search.type}-details.html#id=${result.id}">
+          <a href="${global.search.type}-details.html?id=${result.id}">
             ${
               result.poster_path
                 ? `<img
@@ -429,14 +429,13 @@ function displayPagination() {
 // Display Slider Movies
 async function displaySlider() {
   const { results } = await fetchAPIData("movie/now_playing");
-  
 
   results.forEach((movie) => {
     const div = document.createElement("div");
     div.classList.add("swiper-slide");
 
     div.innerHTML = `
-      <a href="/popcorn_film/pages/movie-details.html#id=${movie.id}">
+      <a href="movie-details.html?id=${movie.id}">
         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
       </a>
       <h4 class="swiper-rating">
@@ -486,7 +485,6 @@ async function fetchAPIData(endpoint) {
   );
 
   const data = await response.json();
-  
 
   hideSpinner();
 
@@ -545,24 +543,24 @@ function addCommasToNumber(number) {
 
 // Init App
 export function init() {
-  // renderHeaderAndFooter();
+  renderHeaderAndFooter();
 
   switch (global.currentPage) {
-    
-    case "/popcorn_film_flix/index.html":
+    case "/":
+    case "/index.html":
       displaySlider();
       displayPopularMovies();
       break;
-    case "/popcorn_film_flix/shows.html":
+    case "/pages/shows.html":
       displayPopularShows();
       break;
-    case "/popcorn_film_flix/movie-details.html":
+    case "/pages/movie-details.html":
       displayMovieDetails();
       break;
-    case "/popcorn_film_flix/tv-details.html":
+    case "/pages/tv-details.html":
       displayShowDetails();
       break;
-    case "/popcorn_film_flix/search.html":
+    case "/pages/search.html":
       search();
       break;
   }
