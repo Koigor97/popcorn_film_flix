@@ -111,6 +111,8 @@ async function displayPopularMovies() {
 async function displayPopularShows() {
   const { results } = await fetchAPIData("tv/popular");
 
+  console.log(results);
+
   results.forEach((show) => {
     const div = document.createElement("div");
     div.classList.add("card");
@@ -551,7 +553,7 @@ export function init() {
       displaySlider();
       displayPopularMovies();
       break;
-    case "/pages/shows.html":
+    case "./pages/shows.html":
       displayPopularShows();
       break;
     case "/pages/movie-details.html":
